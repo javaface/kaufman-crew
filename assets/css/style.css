@@ -110,6 +110,18 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
 }
 
+.nav-link--cta {
+  background: var(--gold);
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav-link--cta:hover,
+.nav-link--cta.active {
+  background: #b8923f;
+  color: #fff;
+}
+
 /* ================================================================
    Page Header
 ================================================================ */

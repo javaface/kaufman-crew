@@ -19,7 +19,7 @@
       </a>
       <nav class="site-nav">
         <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Announcements</a>
-        <a href="{{ '/teetimes' | relative_url }}" class="nav-link {% if page.url contains 'teetimes' %}active{% endif %}">Tee Times</a>
+        <a href="{{ '/teetimes' | relative_url }}" class="nav-link nav-link--cta {% if page.url contains 'teetimes' %}active{% endif %}">Tee Times</a>
         <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url contains 'about' %}active{% endif %}">About</a>
       </nav>
     </div>
