@@ -7,9 +7,9 @@
 #   expires:  YYYY-MM-DD — hide after this date (optional)
 #   source:   URL to official post (optional)
 
-- title: "Hold on Play"
+- title: "Course Open for Carts"
   date: "2026-09-20"
-  type: "Weather"
-  body: "Groundskeeper has put a hold on play as of ~10:20 AM. Carts in rough only due to wet conditions. Updates to follow."
+  type: "General"
+  body: "The course is open for carts today."
   expires: "2026-09-20"
   source: ""
