@@ -1,0 +1,91 @@
+---
+title: Tee Times & Pairings
+description: Upcoming rounds and pairings for the Kaufman Golf Group.
+---
+
+<div class="page-header">
+  <h1>Tee Times &amp; Pairings</h1>
+  <p class="lead">Upcoming rounds for the Kaufman Crew &mdash; Wyoming, MI.</p>
+</div>
+
+{% assign today = 'now' | date: "%Y-%m-%d" %}
+{% assign all_times = site.data.teetimes | default: empty %}
+{% unless all_times[0] %}{% assign all_times = "" | split: "" %}{% endunless %}
+{% assign upcoming = all_times | where_exp: "item", "item.date >= today" | sort: "date" %}
+{% assign past = all_times | where_exp: "item", "item.date < today" | sort: "date" | reverse %}
+
+{% if upcoming.size > 0 %}
+<h2 class="section-heading">Upcoming</h2>
+<div class="teetimes-list">
+  {% for round in upcoming %}
+  <div class="teetime-card teetime-card--upcoming">
+    <div class="teetime-header">
+      <div class="teetime-date-block">
+        <span class="teetime-month">{{ round.date | date: "%b" }}</span>
+        <span class="teetime-day">{{ round.date | date: "%-d" }}</span>
+        <span class="teetime-year">{{ round.date | date: "%Y" }}</span>
+      </div>
+      <div class="teetime-meta">
+        <span class="teetime-holes">{{ round.holes }} holes</span>
+        {% if round.notes and round.notes != "" %}
+        <p class="teetime-notes">{{ round.notes }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% if round.pairings %}
+    <div class="pairings">
+      {% for group in round.pairings %}
+      <div class="pairing-group">
+        <span class="group-label">{% if group.time %}{{ group.time }}{% else %}Group {{ forloop.index }}{% endif %}</span>
+        <ul class="player-list">
+          {% for player in group.players %}
+          <li class="player">{{ player }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p class="no-rounds">No upcoming rounds scheduled.</p>
+{% endif %}
+
+{% if past.size > 0 %}
+<h2 class="section-heading section-heading--past">Past Rounds</h2>
+<div class="teetimes-list teetimes-list--past">
+  {% for round in past %}
+  <div class="teetime-card teetime-card--past">
+    <div class="teetime-header">
+      <div class="teetime-date-block">
+        <span class="teetime-month">{{ round.date | date: "%b" }}</span>
+        <span class="teetime-day">{{ round.date | date: "%-d" }}</span>
+        <span class="teetime-year">{{ round.date | date: "%Y" }}</span>
+      </div>
+      <div class="teetime-meta">
+        <span class="teetime-holes">{{ round.holes }} holes</span>
+        {% if round.notes and round.notes != "" %}
+        <p class="teetime-notes">{{ round.notes }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% if round.pairings %}
+    <div class="pairings">
+      {% for group in round.pairings %}
+      <div class="pairing-group">
+        <span class="group-label">{% if group.time %}{{ group.time }}{% else %}Group {{ forloop.index }}{% endif %}</span>
+        <ul class="player-list">
+          {% for player in group.players %}
+          <li class="player">{{ player }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

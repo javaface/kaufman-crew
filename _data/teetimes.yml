@@ -1,0 +1,19 @@
+# Kaufman Crew tee times and pairings
+# Fields:
+#   date:     YYYY-MM-DD
+#   holes:    9 or 18
+#   notes:    Any extra info (optional)
+#   pairings: list of groups, each with:
+#     time:    HH:MM (24-hour, optional per-group tee time)
+#     players: list of names
+
+- date: "2026-09-20"
+  holes: 18
+  notes: "10:50 and 11:00 groups cancelled. Hold on play as of ~10:20 AM."
+  pairings:
+    - time: "11:10"
+      players: ["Ox", "Wiz", "Bas", "Kohn"]
+    - time: "11:20"
+      players: ["Feather", "Mitch", "Jamie", "Fritz"]
+    - time: "11:30"
+      players: ["Hamlin", "Debri", "Dave"]

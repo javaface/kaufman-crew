@@ -1,0 +1,98 @@
+---
+title: Course Announcements
+description: Course status, closures, and events at Kaufman Golf Course — Wyoming, MI.
+---
+
+<div class="page-header">
+  <h1>Course Announcements</h1>
+  <p class="lead">Course status, closures, and events &mdash; for the crew.</p>
+  <div class="stats-bar">
+    {% assign today = 'now' | date: "%Y-%m-%d" %}
+    {% assign active = site.data.announcements | where_exp: "item", "item.expires == '' or item.expires == nil or item.expires >= today" %}
+    <span class="stat"><strong>{{ active | size }}</strong> active</span>
+    <span class="stat-divider">|</span>
+    <span class="stat"><strong>{{ site.data.announcements | size }}</strong> total</span>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="search-wrap">
+    <input
+      type="search"
+      id="search-input"
+      class="search-input"
+      placeholder="Search announcements…"
+      aria-label="Search announcements"
+    >
+  </div>
+  <div class="filter-wrap">
+    <label for="type-filter" class="sr-only">Filter by type</label>
+    <select id="type-filter" class="filter-select">
+      <option value="">All types</option>
+      <option value="Closure">Closure</option>
+      <option value="Cart Path Only">Cart Path Only</option>
+      <option value="Aerification">Aerification</option>
+      <option value="Weather">Weather</option>
+      <option value="Event">Event</option>
+      <option value="General">General</option>
+    </select>
+  </div>
+  <div class="sort-wrap">
+    <label for="sort-select" class="sr-only">Sort by</label>
+    <select id="sort-select" class="filter-select">
+      <option value="date-desc">Newest first</option>
+      <option value="date-asc">Oldest first</option>
+    </select>
+  </div>
+</div>
+
+<div id="no-results" class="no-results" style="display:none;">
+  <p>No announcements match your search.</p>
+</div>
+
+{% assign announcements = site.data.announcements | default: empty %}
+{% unless announcements[0] %}{% assign announcements = "" | split: "" %}{% endunless %}
+<div id="announcements-list" class="announcements-list">
+  {% assign sorted = announcements | sort: "date" | reverse %}
+  {% if sorted.size == 0 %}
+  <p class="no-rounds">No announcements yet.</p>
+  {% endif %}
+  {% for item in sorted %}
+  <article
+    class="announcement-card"
+    data-name="{{ item.title | downcase }}"
+    data-location=""
+    data-reason="{{ item.body | downcase }}"
+    data-notes=""
+    data-type="{{ item.type }}"
+    data-date="{{ item.date }}"
+  >
+    <div class="card-header">
+      <div class="card-title-group">
+        <h2 class="card-name">{{ item.title }}</h2>
+      </div>
+      <span class="badge badge--{{ item.type | slugify }}">{{ item.type }}</span>
+    </div>
+    <div class="card-body">
+      <p class="card-reason">{{ item.body }}</p>
+    </div>
+    <div class="card-footer">
+      <div class="card-dates">
+        <span class="card-date">
+          <span class="label">Posted</span>
+          <time datetime="{{ item.date }}">{{ item.date | date: "%B %-d, %Y" }}</time>
+        </span>
+        {% if item.expires and item.expires != "" %}
+        <span class="card-date">
+          <span class="label">Expires</span>
+          <time datetime="{{ item.expires }}">{{ item.expires | date: "%B %-d, %Y" }}</time>
+        </span>
+        {% endif %}
+      </div>
+      {% if item.source and item.source != "" %}
+      <a href="{{ item.source }}" class="source-link" target="_blank" rel="noopener noreferrer">Source ↗</a>
+      {% endif %}
+    </div>
+  </article>
+  {% endfor %}
+</div>

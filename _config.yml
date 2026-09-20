@@ -1,0 +1,29 @@
+title: Kaufman Crew
+description: Tee times and course updates for a group of regulars in Wyoming, MI
+baseurl: "/kaufman-crew"
+url: "https://javaface.github.io"
+
+author:
+  name: Kaufman Golf Group
+
+timezone: America/New_York
+permalink: pretty
+
+# GitHub Pages theme override — using custom layout instead
+# theme: minima
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+markdown: kramdown
+highlighter: rouge
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

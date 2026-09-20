@@ -1,0 +1,60 @@
+---
+title: About
+description: About the Kaufman Golf Group site.
+---
+
+<div class="page-header">
+  <h1>About</h1>
+</div>
+
+<div class="prose">
+  <p>This site is for the Kaufman Crew &mdash; a group of regulars who play together in Wyoming, MI. It tracks course announcements (closures, conditions, aeration windows) and upcoming tee times and pairings.</p>
+  <p>This is an unofficial, privately maintained site and is not affiliated with any golf course or club.</p>
+  <p>Scores are tracked separately via <a href="https://www.ghin.com" target="_blank" rel="noopener noreferrer">GHIN</a>.</p>
+
+  <h2>How to Update the Site</h2>
+  <p>Edit <code>_data/announcements.yml</code> or <code>_data/teetimes.yml</code> on GitHub and commit. The site rebuilds automatically.</p>
+
+  <h2>Data Files</h2>
+  <p>All content is stored as YAML in the <code>_data/</code> folder:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>File</th><th>Contents</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>_data/announcements.yml</code></td><td>Course status updates</td></tr>
+      <tr><td><code>_data/teetimes.yml</code></td><td>Upcoming and past rounds with pairings</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Announcement Fields</h2>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Field</th><th>Required</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>title</code></td><td>Yes</td><td>Short headline</td></tr>
+      <tr><td><code>date</code></td><td>Yes</td><td>YYYY-MM-DD</td></tr>
+      <tr><td><code>type</code></td><td>Yes</td><td>Closure, Cart Path Only, Aerification, Weather, Event, General</td></tr>
+      <tr><td><code>body</code></td><td>Yes</td><td>Full announcement text</td></tr>
+      <tr><td><code>expires</code></td><td>No</td><td>YYYY-MM-DD — card hidden after this date</td></tr>
+      <tr><td><code>source</code></td><td>No</td><td>URL to official post</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Tee Time Fields</h2>
+  <table class="data-table">
+    <thead>
+      <tr><th>Field</th><th>Required</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>date</code></td><td>Yes</td><td>YYYY-MM-DD</td></tr>
+      <tr><td><code>time</code></td><td>Yes</td><td>HH:MM (24-hour)</td></tr>
+      <tr><td><code>holes</code></td><td>Yes</td><td>9 or 18</td></tr>
+      <tr><td><code>notes</code></td><td>No</td><td>Any extra context</td></tr>
+      <tr><td><code>pairings</code></td><td>No</td><td>List of groups, each with a <code>players</code> list</td></tr>
+    </tbody>
+  </table>
+</div>

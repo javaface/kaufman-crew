@@ -1,0 +1,15 @@
+# Kaufman Crew announcements
+# Fields:
+#   title:    Short headline
+#   date:     YYYY-MM-DD
+#   type:     Closure | Cart Path Only | Aerification | Weather | Event | General
+#   body:     Full announcement text
+#   expires:  YYYY-MM-DD — hide after this date (optional)
+#   source:   URL to official post (optional)
+
+- title: "Hold on Play"
+  date: "2026-09-20"
+  type: "Weather"
+  body: "Groundskeeper has put a hold on play as of ~10:20 AM. Carts in rough only due to wet conditions. Updates to follow."
+  expires: "2026-09-20"
+  source: ""
